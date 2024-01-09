@@ -20,7 +20,7 @@ class Post(Base):
     titulo = models.CharField(max_length=30)
     resumo = models.CharField(max_length=255)
     texto = models.TextField()
-    imagen= models.ImageField(upload_to="img")
+    imagem= models.ImageField(upload_to="img")
     category = models.ForeignKey(Categoria,related_name="posts",on_delete=models.CASCADE)    
 
     class Meta:

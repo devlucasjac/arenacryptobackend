@@ -8,5 +8,5 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('titulo','resumo','texto','imagen','category','criacao','ativo')
+    list_display = ('titulo','resumo','texto','imagem','category','criacao','ativo')
 
