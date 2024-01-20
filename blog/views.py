@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins
 from rest_framework.decorators import action
+
 from .models import Post,Categoria
-from .serializers import PostSerializer,CategoriaSerializer
+from .serializers import PostSerializer,CategoriaSerializer,PostRetrieveSerializer
 # Create your views here.
 
 class CategoriaViewset(viewsets.ModelViewSet):
@@ -28,5 +31,11 @@ class PostViewset(viewsets.ModelViewSet):
             return Response(serializer.data)
         post =Post.objects.all() 
         serializer = PostSerializer(post,many=True)
+        return Response(serializer.data)
+
+    def retrieve(self,request,pk=None):
+        queryset = Post.objects.all()       
+        post = get_object_or_404(queryset, pk=pk)
+        serializer = PostRetrieveSerializer(post)        
         return Response(serializer.data)
        
