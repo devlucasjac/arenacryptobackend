@@ -6,6 +6,13 @@ class CategoriaSerializer(serializers.ModelSerializer):
         model = Categoria
         fields = ['id','nome']
 
+class PostRetrieveSerializer(serializers.ModelSerializer):
+    category = CategoriaSerializer()
+    class Meta:
+        model = Post
+        fields = ["id",'titulo','resumo','imagem','texto','category']
+
+
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
